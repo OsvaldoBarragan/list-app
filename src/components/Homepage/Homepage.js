@@ -132,13 +132,11 @@ class Homepage extends Component {
               {
                 lists.map((list, index) => {
                   if (list.name !== null && list.name !== '') {
-                    if (list.listId === 1) {
-                      return <TableRow key={index}>
-                        <TableCell align="right">{list.id}</TableCell>
-                        <TableCell align="right">{list.listId}</TableCell>
-                        <TableCell align="right">{list.name}</TableCell>
-                      </TableRow>
-                    }
+                    return <TableRow key={index}>
+                      <TableCell align="right">{list.id}</TableCell>
+                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right">{list.name}</TableCell>
+                    </TableRow>
                   }
                 })
               }
