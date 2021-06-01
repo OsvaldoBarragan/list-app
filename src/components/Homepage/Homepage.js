@@ -42,41 +42,6 @@ class Homepage extends Component {
       )
     }
 
-    // const getId = function (list) {
-    //   const idNum = []
-    //   for (let i = 0; i < list.length - 990; i++) {
-    //     if (list[i].name === null) {
-    //     } else if (list[i].name === '') {
-    //     } else {
-    //       idNum.push(list[i].id)
-    //     }
-    //   }
-    //   return idNum
-    // }
-    //
-    // const getListId = function (list) {
-    //   const listIdNum = []
-    //   for (let i = 0; i < list.length - 990; i++) {
-    //     if (list[i].name === null) {
-    //     } else if (list[i].name === '') {
-    //     } else {
-    //       listIdNum.push(list[i].listId)
-    //     }
-    //   }
-    //   return listIdNum
-    // }
-    //
-    // const getName = function (list) {
-    //   const name = []
-    //   for (let i = 0; i < list.length - 990; i++) {
-    //     if (list[i].name === null) {
-    //     } else if (list[i].name === '') {
-    //     } else {
-    //       name.push(list[i].id)
-    //     }
-    //   }
-    //   return name
-    // }
     //
     // const objects = [
     //   {
@@ -102,20 +67,58 @@ class Homepage extends Component {
     //   {
     //     'id': 10,
     //     'listId': 2,
-    //     'name': '10'
+    //     'name': 'Item 10'
+    //   },
+    //   {
+    //     'id': 58,
+    //     'listId': 1,
+    //     'name': 'Item 58'
+    //   },
+    //   {
+    //     'id': 22,
+    //     'listId': 2,
+    //     'name': 'Item 22'
+    //   },
+    //   {
+    //     'id': 76,
+    //     'listId': 4,
+    //     'name': 'Item 76'
+    //   },
+    //   {
+    //     'id': 12,
+    //     'listId': 3,
+    //     'name': 'Item 12'
+    //   },
+    //   {
+    //     'id': 19,
+    //     'listId': 3,
+    //     'name': 'Item 19'
     //   }
     // ]
 
-    // const numbers = [3, 4, 1, 2, 5, 9, 2, 20, 18, 48, 29]
+    const groupLists = function () {
+      const listId1 = []
+      const listId2 = []
+      const listId3 = []
+      const listId4 = []
 
-    // const sorted = objects.slice().sort(function (a, b) {
-    //   return a - b
-    // })
+      for (let i = 0; i < lists.length; i++) {
+        const list = lists[i]
 
-    // console.log(sorted)
-    // console.log('This is getId: ', getId(lists))
-    // console.log('This is getListId: ', getListId())
-    // console.log('This is getName: ', getName())
+        if (list.listId === 1) {
+          listId1.push(list)
+        } else if (list.listId === 2) {
+          listId2.push(list)
+        } else if (list.listId === 3) {
+          listId3.push(list)
+        } else if (list.listId === 4) {
+          listId4.push(list)
+        }
+      }
+      return { 'one': listId1, 'two': listId2, 'three': listId3, 'four': listId4 }
+    }
+
+    console.log(groupLists().four)
 
     return (
       <div>
@@ -130,7 +133,40 @@ class Homepage extends Component {
             </TableHead>
             <TableBody>
               {
-                lists.map((list, index) => {
+                groupLists().one.map((list, index) => {
+                  if (list.name !== null && list.name !== '') {
+                    return <TableRow key={index}>
+                      <TableCell align="right">{list.id}</TableCell>
+                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right">{list.name}</TableCell>
+                    </TableRow>
+                  }
+                })
+              },
+              {
+                groupLists().two.map((list, index) => {
+                  if (list.name !== null && list.name !== '') {
+                    return <TableRow key={index}>
+                      <TableCell align="right">{list.id}</TableCell>
+                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right">{list.name}</TableCell>
+                    </TableRow>
+                  }
+                })
+              },
+              {
+                groupLists().three.map((list, index) => {
+                  if (list.name !== null && list.name !== '') {
+                    return <TableRow key={index}>
+                      <TableCell align="right">{list.id}</TableCell>
+                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right">{list.name}</TableCell>
+                    </TableRow>
+                  }
+                })
+              },
+              {
+                groupLists().four.map((list, index) => {
                   if (list.name !== null && list.name !== '') {
                     return <TableRow key={index}>
                       <TableCell align="right">{list.id}</TableCell>
