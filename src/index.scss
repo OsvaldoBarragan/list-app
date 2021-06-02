@@ -1,1 +1,25 @@
+$listId1Color: #0096c7;
+$listId2Color: #00b4d8;
+$listId3Color: #48cae4;
+$listId4Color: #90e0ef;
 @import '~bootstrap/scss/bootstrap';
+
+#headerColor1, #headerColor2, #headerColor3 {
+  background-color: grey;
+}
+
+.listId1 {
+  background-color: $listId1Color;
+}
+
+.listId2 {
+  background-color: $listId2Color;
+}
+
+.listId3 {
+  background-color: $listId3Color;
+}
+
+.listId4 {
+  background-color: $listId4Color;
+}

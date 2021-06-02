@@ -42,60 +42,6 @@ class Homepage extends Component {
       )
     }
 
-    //
-    // const objects = [
-    //   {
-    //     'id': 42,
-    //     'listId': 1,
-    //     'name': 'Item 42'
-    //   },
-    //   {
-    //     'id': 48,
-    //     'listId': 4,
-    //     'name': 'Item 48'
-    //   },
-    //   {
-    //     'id': 102,
-    //     'listId': 2,
-    //     'name': 'Item 102'
-    //   },
-    //   {
-    //     'id': 33,
-    //     'listId': 3,
-    //     'name': 'Item 33'
-    //   },
-    //   {
-    //     'id': 10,
-    //     'listId': 2,
-    //     'name': 'Item 10'
-    //   },
-    //   {
-    //     'id': 58,
-    //     'listId': 1,
-    //     'name': 'Item 58'
-    //   },
-    //   {
-    //     'id': 22,
-    //     'listId': 2,
-    //     'name': 'Item 22'
-    //   },
-    //   {
-    //     'id': 76,
-    //     'listId': 4,
-    //     'name': 'Item 76'
-    //   },
-    //   {
-    //     'id': 12,
-    //     'listId': 3,
-    //     'name': 'Item 12'
-    //   },
-    //   {
-    //     'id': 19,
-    //     'listId': 3,
-    //     'name': 'Item 19'
-    //   }
-    // ]
-
     const groupLists = function () {
       const listId1 = []
       const listId2 = []
@@ -115,10 +61,26 @@ class Homepage extends Component {
           listId4.push(list)
         }
       }
-      return { 'one': listId1, 'two': listId2, 'three': listId3, 'four': listId4 }
+
+      return {
+        'one': listId1,
+        'two': listId2,
+        'three': listId3,
+        'four': listId4
+      }
     }
 
-    console.log(groupLists().four)
+    const lowestToHighest = function (lists) {
+      const lts = lists
+      return lts.sort((a, b) => a.id - b.id)
+    }
+
+    const sortedList1 = lowestToHighest(groupLists().one)
+    const sortedList2 = lowestToHighest(groupLists().two)
+    const sortedList3 = lowestToHighest(groupLists().three)
+    const sortedList4 = lowestToHighest(groupLists().four)
+
+    // console.log(sortedList1)
 
     return (
       <div>
@@ -126,52 +88,52 @@ class Homepage extends Component {
           <Table className='indexTable' stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <TableCell align="right">id</TableCell>
-                <TableCell align="right">listId</TableCell>
-                <TableCell align="right">name</TableCell>
+                <TableCell align="right" id='headerColor1'>listId</TableCell>
+                <TableCell align="right" id='headerColor2'>name</TableCell>
+                <TableCell align="right" id='headerColor3'>id</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {
-                groupLists().one.map((list, index) => {
+                sortedList1.map((list, index) => {
                   if (list.name !== null && list.name !== '') {
                     return <TableRow key={index}>
-                      <TableCell align="right">{list.id}</TableCell>
-                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right" className='listId1'>{list.listId}</TableCell>
                       <TableCell align="right">{list.name}</TableCell>
+                      <TableCell align="right">{list.id}</TableCell>
                     </TableRow>
                   }
                 })
-              },
+              }
               {
-                groupLists().two.map((list, index) => {
+                sortedList2.map((list, index) => {
                   if (list.name !== null && list.name !== '') {
                     return <TableRow key={index}>
-                      <TableCell align="right">{list.id}</TableCell>
-                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right" className='listId2'>{list.listId}</TableCell>
                       <TableCell align="right">{list.name}</TableCell>
+                      <TableCell align="right">{list.id}</TableCell>
                     </TableRow>
                   }
                 })
-              },
+              }
               {
-                groupLists().three.map((list, index) => {
+                sortedList3.map((list, index) => {
                   if (list.name !== null && list.name !== '') {
                     return <TableRow key={index}>
-                      <TableCell align="right">{list.id}</TableCell>
-                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right" className='listId3'>{list.listId}</TableCell>
                       <TableCell align="right">{list.name}</TableCell>
+                      <TableCell align="right">{list.id}</TableCell>
                     </TableRow>
                   }
                 })
-              },
+              }
               {
-                groupLists().four.map((list, index) => {
+                sortedList4.map((list, index) => {
                   if (list.name !== null && list.name !== '') {
                     return <TableRow key={index}>
-                      <TableCell align="right">{list.id}</TableCell>
-                      <TableCell align="right">{list.listId}</TableCell>
+                      <TableCell align="right" className='listId4'>{list.listId}</TableCell>
                       <TableCell align="right">{list.name}</TableCell>
+                      <TableCell align="right">{list.id}</TableCell>
                     </TableRow>
                   }
                 })
