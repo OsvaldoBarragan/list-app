@@ -2,27 +2,17 @@ import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
-import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
-import SignUp from './components/SignUp/SignUp'
-import SignIn from './components/SignIn/SignIn'
-import SignOut from './components/SignOut/SignOut'
-import ChangePassword from './components/ChangePassword/ChangePassword'
 import Homepage from './components/Homepage/Homepage'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      user: null,
       msgAlerts: []
     }
   }
-
-  setUser = user => this.setState({ user })
-
-  clearUser = () => this.setState({ user: null })
 
   deleteAlert = (id) => {
     this.setState((state) => {
@@ -56,18 +46,6 @@ class App extends Component {
         <main className="container">
           <Route exact path='/' render={() => (
             <Homepage msgAlert={this.msgAlert} />
-          )} />
-          <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

@@ -80,6 +80,8 @@ class Homepage extends Component {
     const sortedList3 = lowestToHighest(groupLists().three)
     const sortedList4 = lowestToHighest(groupLists().four)
 
+    console.log(sortedList1[2])
+
     // console.log(sortedList1)
 
     return (
