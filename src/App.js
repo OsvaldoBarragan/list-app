@@ -28,11 +28,11 @@ class App extends Component {
   }
 
   render () {
-    const { msgAlerts, user } = this.state
+    const { msgAlerts } = this.state
 
     return (
       <Fragment>
-        <Header user={user} />
+        <Header/>
         {msgAlerts.map(msgAlert => (
           <AutoDismissAlert
             key={msgAlert.id}
